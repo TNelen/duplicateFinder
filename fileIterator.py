@@ -8,7 +8,7 @@ def main():
     for r, d, f in os.walk(path):
         for file in f:
             if '.mp3' in file:
-                files.append(os.path.join(r, file))
+                files.append((file))
 
     for f in files:
         print(f)
