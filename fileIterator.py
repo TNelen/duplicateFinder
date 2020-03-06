@@ -12,17 +12,19 @@ def Diff(li1, li2):
     return difference
 
 def main():
+    filecount = 0
     songs = []
     songname = []
     # r=root, d=directories, f = files
     for r, d, f in os.walk(path):
         #print(d)
-        print(len(songs))
+        #print(len(songs))
         for dirs in d:
             pathname =r + "\\"+ dirs
-            print(pathname)
+            #print(pathname)
             for r2, d2, f2 in os.walk(pathname):
                 for file in f2:
+                    filecount+=1
                     if '.mp3' in file:
                         if ' - ' in file:
                             songname = file.split(" - ")
@@ -35,9 +37,9 @@ def main():
                         songs.append(title)
 
 
+    print("number of scanned files")
+    print(filecount)
 
-    for f in songs:
-        print(f)
     print("total number of songs")
     print(len(songs))
     
