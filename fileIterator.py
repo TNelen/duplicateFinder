@@ -36,7 +36,8 @@ def main():
 
 
 
-
+    for f in songs:
+        print(f)
     print("total number of songs")
     print(len(songs))
     
@@ -45,11 +46,9 @@ def main():
     print (len(uniques))
 
     duplicates = Diff(songs, uniques) 
-
     print("number of duplicates")  
     print (len(duplicates))
-
-    #print duplicates to file
+    print("duplicates:")
     f = open("duplicates", "a")
     for song in duplicates:
         f.write(song + "\n")
