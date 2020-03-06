@@ -49,7 +49,7 @@ def main():
     print("number of duplicates")  
     print (len(duplicates))
     print("duplicates:")
-    f = open("duplicates", "a")
+    f = open("duplicates.txt", "a")
     for song in duplicates:
         f.write(song + "\n")
     f.close()
