@@ -11,14 +11,13 @@ def Diff(li1, li2):
             li2.remove(i)
     return difference
 
+
 def main():
     filecount = 0
     songs = []
     songname = []
     # r=root, d=directories, f = files
     for r, d, f in os.walk(path):
-        #print(d)
-        #print(len(songs))
         for dirs in d:
             pathname =r + "\\"+ dirs
             #print(pathname)
@@ -32,10 +31,9 @@ def main():
                         else:
                             title = file
 
-                        if title.endswith('.mp3'):
+                        if title.endswith('.mp3' or '.wav' or '.m4a'):
                             title = title[:-4]
                         songs.append(title)
-
 
     #print information
     print("number of scanned files")
