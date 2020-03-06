@@ -25,7 +25,7 @@ def main():
             for r2, d2, f2 in os.walk(pathname):
                 for file in f2:
                     filecount+=1
-                    if '.mp3' in file:
+                    if '.mp3' in file or '.wav' in file or '.m4a' in file:
                         if ' - ' in file:
                             songname = file.split(" - ")
                             title = songname[1]
@@ -51,9 +51,10 @@ def main():
     print("number of duplicates")  
     print (len(duplicates))
     print("duplicates:")
-    f = open("duplicates.txt", "a")
-    for song in duplicates:
-        f.write(song + "\n")
+    f = open("duplicates.txt", "w")
+    
+    for title in sorted(duplicates):
+        f.write(title + "\n")
     f.close()
 
 
