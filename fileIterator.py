@@ -49,8 +49,13 @@ def main():
     print("number of duplicates")  
     print (len(duplicates))
     print("duplicates:")
-    #for f in duplicates:
-        #print(f)
+    f = open("duplicates", "a")
+    for song in duplicates:
+        f.write(song + "\n")
+    f.close()
+
+
+    
 
 
 if __name__ == "__main__":
