@@ -37,6 +37,7 @@ def main():
                         songs.append(title)
 
 
+    #print information
     print("number of scanned files")
     print(filecount)
 
@@ -50,7 +51,8 @@ def main():
     duplicates = Diff(songs, uniques) 
     print("number of duplicates")  
     print (len(duplicates))
-    print("duplicates:")
+
+    #write duplicate titles to file
     f = open("duplicates.txt", "w")
     
     for title in sorted(duplicates):
