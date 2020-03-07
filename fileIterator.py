@@ -59,12 +59,22 @@ def main():
                 dup_info[i] = j 
 
     #write duplicate titles to file
-    f = open("duplicates.txt", "w")
+    try:
+        duplist = open("duplicates.txt", "w")
+    except:
+        print("cannot create duplicates.txt file")
+
     for i,j in dup_info.items():
         length = len(j)
         j=j.ljust(60)
-        f.write(j + i + "\n")
-    f.close()
+        try:
+            duplist.write(j + i + "\n")
+        except UnicodeError:
+            print(j + i + "Not writed to file because of Encoding error")
+        except:
+            print(j+i + "Not written to file because of unknonw error")  
+
+    duplist.close()
 
 
 
