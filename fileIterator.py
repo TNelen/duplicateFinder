@@ -1,6 +1,5 @@
 import os
 
-path = 'E:\\Music'
 
 def Diff(li1, li2):
     difference = []
@@ -13,16 +12,16 @@ def Diff(li1, li2):
 
 
 def main():
+
+    path = 'E:\\Music'
     filecount = 0
     songs = []
     songname = []
+    info = {}
+    dup_info = {}
     # r=root, d=directories, f = files
     for r, d, f in os.walk(path):
-        for dirs in d:
-            pathname =r + "\\"+ dirs
-            #print(pathname)
-            for r2, d2, f2 in os.walk(pathname):
-                for file in f2:
+                for file in f:
                     filecount+=1
                     if '.mp3' in file or '.wav' in file or '.m4a' in file:
                         if ' - ' in file:
@@ -34,6 +33,9 @@ def main():
                         if title.endswith('.mp3' or '.wav' or '.m4a'):
                             title = title[:-4]
                         songs.append(title)
+                        path = os.path.join(r,file)
+                        info[path] = title
+
 
     #print information
     print("number of scanned files")
@@ -50,6 +52,12 @@ def main():
     print("number of duplicates")  
     print (len(duplicates))
 
+    unique_duplicates = set(duplicates)
+    for song in sorted(unique_duplicates):
+        for i,j in info.items():
+            if j ==song:
+                dup_info[i] = j 
+
     #write duplicate titles to file
     f = open("duplicates.txt", "w")
     
@@ -57,8 +65,15 @@ def main():
         f.write(title + "\n")
     f.close()
 
+    f = open("maptest.txt", "w")
+    for i,j in dup_info.items():
+        length = len(j)
+        j=j.ljust(60)
+        f.write(j + i + "\n")
+    f.close()
 
-    
+
+    print(dup_info)
 
 
 if __name__ == "__main__":
