@@ -73,8 +73,6 @@ def main():
     f.close()
 
 
-    print(dup_info)
-
 
 if __name__ == "__main__":
     main()
