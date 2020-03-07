@@ -60,12 +60,6 @@ def main():
 
     #write duplicate titles to file
     f = open("duplicates.txt", "w")
-    
-    for title in sorted(duplicates):
-        f.write(title + "\n")
-    f.close()
-
-    f = open("maptest.txt", "w")
     for i,j in dup_info.items():
         length = len(j)
         j=j.ljust(60)
